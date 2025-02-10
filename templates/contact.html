@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="contact_form">
+    <h1 class="text-center text-warning">Contact Us!</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for category, message in messages %}
+                    <p style="text-align: center;">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card shadow-lg p-4 mx-auto" style="max-width: 500px; border-radius: 15px;">
+                <form method="POST" action="{{ url_for('contact') }}">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="form-group">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.subject.label(class="form-label") }}
+                        {{ form.subject(class="form-control") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.body.label(class="form-label") }}
+                        {{ form.body(class="form-control") }} <!-- Este es el CKEditor -->
+                    </div>
+
+                    <div class="form-group text-center">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#body'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Your Cart</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <section>
+    <h2>Your Cart</h2>
+    <div class="cart-items">
+      {% if session.cart %}
+        {% for item in session.cart %}
+          <div class="cart-item">
+            <img src="{{ item['img'] }}" alt="{{ item['name'] }}">
+            <div class="description">
+              <h3>{{ item['name'] }}</h3>
+              <p>${{ item['price'] }}</p>
+              <p>Quantity: {{ item['quantity'] }}</p>
+            </div>
+          </div>
+        {% endfor %}
+        <h3>Total: ${{ session.total_price }}</h3>
+      {% else %}
+        <p>Your cart is empty.</p>
+      {% endif %}
+    </div>
+
+    {% if session.cart %}
+      <form action="/create-checkout-session" method="POST">
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    {% else %}
+      <a href="{{ url_for('home') }}">Go back to shopping</a>
+    {% endif %}
+  </section>
+</body>
+</html>

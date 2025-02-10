@@ -1,0 +1,159 @@
+.navbar {
+    background-color: #343a40;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+/* Logo */
+.navbar-brand img {
+    height: 50px;
+}
+
+
+/* Enlaces de la navbar */
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f8f9fa !important;
+}
+
+/* Botón de búsqueda */
+.form-control {
+    width: 200px;
+    margin-left: 50px;
+}
+
+.btn-outline-light {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #343a40;
+}
+
+/* Carrito de compras */
+.cart-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.cart-content {
+    display: none; 
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 999;
+}
+
+.cart-content h3 {
+    margin-top: 0;
+}
+
+.cart-content button {
+    margin-top: 10px;
+    background-color: #76d7c4;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-content button:hover {
+    background-color: #28b463;
+}
+
+.box-cerrar {
+    font-size: 15px;
+}
+
+.navbar-nav .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.boton_carrito {
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+}
+
+
+.card form {
+    width: 100%;
+    padding: 0;
+    font-size: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.card input{
+    margin-left: auto;
+    width: 100%;
+}
+
+html, body {
+    background-image: url('/static/background.jpg');
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: black;
+    margin-top: auto;
+    width: 100%;
+    
+}
+.nav-item:hover {
+    background-color: #0080ff;
+    transition: background-color 0.3s ease;
+}
+#total_price {
+    text-align: center;
+    color: rgb(0, 0, 0); 
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+

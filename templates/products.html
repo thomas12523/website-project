@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            {% for publi in data %}
+            <div class="col-md-4 mb-4" name="{{ publi.id }}">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-header bg-white text-center p-4">
+                        <img src="{{ publi.img }}" alt="{{ publi.name }}" class="img-fluid rounded" style="max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 class="card-title fw-bold">{{ publi.name }}</h2>
+                        <h3 class="card-title pricing-card-title text-primary fw-bold">${{ publi.price }}</h3>
+                        {% if current_user.is_authenticated and current_user.id == 1 %}
+                            <form action="{{ url_for('delete', id=publi.id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure to delete this product?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-outline-danger btn-sm mb-3">
+                                    <i class="fas fa-trash me-1"></i> Delete
+                                </button>
+                            </form>
+                            <form action="{{ url_for('edit', id=publi.id) }}" method="GET" style="display: inline;" onsubmit="return confirm('Are you sure to edit this product?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-outline-warning btn-sm mb-3">
+                                    <i class="fas fa-edit me-1"></i> Edit
+                                </button>
+                            </form>
+                        {% endif %}
+                        <a href="{{ url_for('purchase', id=publi.id) }}" class="btn btn-lg btn-primary w-100">
+                            <i class="fas fa-cart-plus me-2"></i> Add Item
+                        </a>                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 15px;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+</style>
+{% endblock %}

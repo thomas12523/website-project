@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for category, message in messages %}
+                    <p style="text-align: center;">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="container-fluid p-0">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 70vh; background-color: #212529;">
+                        <img src="{{ url_for('static', filename='img_index/fumi.webp') }}" class="d-block img-fluid" style="max-height: 100%; object-fit: contain;" alt="Fumigation 1">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 70vh; background-color: #212529;">
+                        <img src="{{ url_for('static', filename='img_index/fumi 2.webp') }}" class="d-block img-fluid" style="max-height: 100%; object-fit: contain;" alt="Fumigation 2">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 70vh; background-color: #212529;">
+                        <img src="{{ url_for('static', filename='img_index/fumi3.webp') }}" class="d-block img-fluid" style="max-height: 100%; object-fit: contain;" alt="Fumigation 3">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container text-center py-5">
+        <h2 class="text-warning font-weight-bold mb-4">Protect Your Home, Protect Your Business</h2>
+        <p class="text-white"><strong>At Fumigue Usted, we offer easy-to-use fumigation products that give you peace of mind. Whether you’re protecting your home or business, we make sure your space remains pest-free, without the need for professional services.</strong></p>
+        <a href="{{url_for('contact')}}" class="btn btn-warning btn-lg">Get Started</a>
+    </div>
+
+    <div class="container py-5 text-center">
+        <h3 class="text-warning font-weight-bold mb-4">How It Works</h3>
+        <div class="row">
+            <div class="col-md-4 mb-4 step">
+                <h5 class="text-warning">Step 1: Easy to Use</h5>
+                <p class="text-white"><strong>Our products are simple to apply. Just follow the included guide for clear, step-by-step instructions.</strong></p>
+            </div>
+            <div class="col-md-4 mb-4 step">
+                <h5 class="text-warning">Step 2: Left The Process acting</h5>
+                <p class="text-white"><strong>Rest easy knowing our fumigants are safe for both your family and pets, but tough on pests.</strong></p>
+            </div>
+            <div class="col-md-4 mb-4 step">
+                <h5 class="text-warning">Step 3: Results You Can Count On</h5>
+                <p class="text-white"><strong>See results quickly with our long-lasting, proven solutions to keep pests away for months.</strong></p>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        .step {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .step:hover {
+            background-color: rgba(255, 193, 7, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        .step h5, .step p {
+            transition: color 0.3s ease;
+        }
+    
+        .step:hover h5, .step:hover p {
+            color: #ffd700; 
+        }
+    </style>
+    
+{% endblock %}

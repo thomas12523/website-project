@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container text-center py-5">
+        <img src="{{ url_for('static', filename='fumigue.png') }}" alt="Descripción de la imagen" class="img-fluid rounded shadow-lg mb-4" style="max-width: 500px;">
+        
+        <div class="text-white text-justify px-3 px-md-5">
+            <h2 class="text-warning font-weight-bold mb-3">About Us</h2>
+            <p class="lead">At <strong>Fumigue Usted</strong>, we have revolutionized the way people protect their homes and businesses from pests. Founded in 1991, our company was born with a clear vision: to empower customers to carry out their own fumigations easily, safely, and effectively—without the need to hire a professional exterminator.</p>
+            <p>Since our inception, we have developed innovative and accessible solutions, providing professional-quality products along with detailed guides so that anyone can apply them with confidence. With over three decades in the market, we have established ourselves as industry leaders, helping thousands of homes and businesses stay pest-free.</p>
+        </div>
+
+        <hr class="my-4 border-light">
+
+        <div class="row text-white text-justify px-3 px-md-5">
+            <div class="col-md-4 mb-4">
+                <h3 class="text-warning font-weight-bold">Mission</h3>
+                <p>To provide our customers with accessible, safe, and efficient pest control solutions, offering high-quality products and expert guidance so they can confidently fumigate on their own.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h3 class="text-warning font-weight-bold">Objective</h3>
+                <p>To become the leading company in the DIY (Do It Yourself) fumigation sector by offering innovative products and personalized customer service that ensures satisfaction and safety.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h3 class="text-warning font-weight-bold">Philosophy</h3>
+                <p>At <strong>Fumigue Usted</strong>, we believe in autonomy and the power of knowledge. We are committed to educating our customers and democratizing fumigation methods, providing the tools for anyone to protect their space effortlessly.</p>
+            </div>
+        </div>
+
+        <div class="text-white px-3 px-md-5">
+            <h4 class="text-warning font-weight-bold">Our Core Values</h4>
+            <ul class="list-unstyled d-flex flex-column flex-md-row justify-content-center align-items-center mt-3">
+                <li class="mx-3 p-2 bg-dark rounded shadow-sm"><strong>✔️ Efficiency</strong> – Products with proven results.</li>
+                <li class="mx-3 p-2 bg-dark rounded shadow-sm"><strong>✔️ Safety</strong> – Solutions designed for both home and professional use.</li>
+                <li class="mx-3 p-2 bg-dark rounded shadow-sm"><strong>✔️ Trust</strong> – Expert guidance and a commitment to our customers.</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

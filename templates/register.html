@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center text-dark">Register!</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for category, message in messages %}
+                    <p style="text-align: center;">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card shadow-lg p-4 mx-auto" style="max-width: 500px; border-radius: 15px;">
+                {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
