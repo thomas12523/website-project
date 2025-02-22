@@ -49,3 +49,4 @@
 - Bootstrap
 - CSS3
 - HTML5
+- Javascript
