@@ -58,6 +58,7 @@ class Product(db.Model):
     price: Mapped[float] = mapped_column(Float())
     name: Mapped[str] = mapped_column(String(1000), unique=True)
     img: Mapped[str] = mapped_column(String(1000), unique=True)
+    content: Mapped[str] = mapped_column(String(10000), unique=True)
 
 class infoSales(db.Model):
     __tablename__ = "sales"
@@ -177,6 +178,10 @@ def skip(id):
 
     return redirect(url_for('products', category=product.category))
 
+@app.route('/description/<int:id>')
+def description(id):
+    product = db.get_or_404(Product, id)
+    return render_template('description.html',item=product)
 
 @app.route('/purchase/<int:id>')
 def purchase(id):
@@ -217,7 +222,8 @@ def add():
         new_publi = Product(category=form_add.category.data,
                             price=form_add.price.data,
                             name=form_add.name.data,
-                            img=form_add.img.data)
+                            img=form_add.img.data,
+                            content=form_add.description.data)
         existing_product = db.session.execute(db.select(Product).where(Product.name == new_publi.name)).scalar()
         if not existing_product:
             db.session.add(new_publi)
@@ -247,6 +253,7 @@ def edit(id):
         price=product.price,
         name=product.name,
         img=product.img,
+        description=product.content
     )
     if edit_product.validate_on_submit():
         product.name = edit_product.name.data

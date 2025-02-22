@@ -31,4 +31,5 @@ class addForm(FlaskForm):
     price=IntegerField("Price",validators=[DataRequired()])
     name=StringField("Product Name",validators=[DataRequired()])
     img=StringField("Name of Image",validators=[DataRequired()])
+    description=CKEditorField("Product's Description", validators=[DataRequired()])
     submit = SubmitField("Submit")

@@ -15,6 +15,12 @@
                     <div class="card-body text-center">
                         <h2 class="card-title fw-bold">{{ publi.name }}</h2>
                         <h3 class="card-title pricing-card-title text-primary fw-bold">${{ publi.price }}</h3>
+                        <form action="{{ url_for('description', id=publi.id) }}" method="GET" style="display: inline;">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-outline-success btn-sm mb-3">
+                                <i class="fas fa-edit me-1"></i> Description
+                            </button>
+                        </form>
                         {% if current_user.is_authenticated and current_user.id == 1 %}
                             <form action="{{ url_for('delete', id=publi.id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure to delete this product?');">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
