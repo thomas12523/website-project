@@ -1,5 +1,9 @@
 # website-project
 
+
+![Página 1](static/pagina_1.png)
+
+
 ## How to run the template?
 
 1. **Create a virtual environment**:
